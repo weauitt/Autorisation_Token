@@ -1,41 +1,26 @@
 'use client';
-import React, { useState } from 'react';
-import axios, { AxiosError } from 'axios';
+import React from 'react';
+import { fetchData, ErrorType } from './services/apiService'; 
 
 interface ApiResponse {
-  message: string; 
+  message: string;
 }
 
-type ErrorType = string | null;
-
 export default function Home() {
-  const [data, setData] = useState<ApiResponse | null>(null); 
-  const [error, setError] = useState<ErrorType>(null); 
+  const [data, setData] = React.useState<ApiResponse | null>(null);
+  const [error, setError] = React.useState<ErrorType>(null);
 
-  const fetchData = async () => {
-    try {
-      const tokenResponse = await axios.get('/api/token'); 
-      const token = tokenResponse.data.token; 
-
-      const response = await axios.get('http://demo7755148.mockable.io/token-demo', {
-        headers: {
-          Authorization: `Bearer ${token}`, 
-        },
-      });
-
-      setData(response.data); 
-    } catch (err) {
-      const axiosError = err as AxiosError; 
-      const headerError = axiosError.response?.headers?.['error-message'] || axiosError.message;
-      setError(headerError);
-    }
+  const handleFetchData = async () => {
+    const result = await fetchData();
+    setData(result.data);  
+    setError(result.error);
   };
 
   return (
     <div>
       <h1>Token Based API Fetcher</h1>
-      <button onClick={fetchData}>Fetch Data</button>
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+      <button onClick={handleFetchData}>Fetch Data</button>
+      {error && <p>Error: {error}</p>}
       {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
     </div>
   );
