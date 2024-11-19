@@ -46,14 +46,13 @@ const ActionGame: React.FC = () => {
             <p className="text-gray-600 mt-2">{game.description}</p>
             <p className="text-gray-500 mt-2">Режиссер: {game.director}</p>
             <p className="text-gray-500">Год выпуска: {game.release_year}</p>
-            <a
+            <link
               href={game.source_url}
-              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline mt-4 inline-block"
             >
               Смотреть на IMDb
-            </a>
+            </link>
           </div>
         </div>
       ))}

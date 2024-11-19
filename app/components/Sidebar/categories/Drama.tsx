@@ -31,14 +31,13 @@ const Drama: React.FC = () => {
             <p className="text-gray-600 mt-2">{drama.description}</p>
             <p className="text-gray-500 mt-2">Режиссер: {drama.director}</p>
             <p className="text-gray-500">Год выпуска: {drama.release_year}</p>
-            <a
+            <link
               href={drama.source_url}
-              target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline mt-4 inline-block"
             >
               Смотреть
-            </a>
+            </link>
           </div>
         </div>
       ))}
