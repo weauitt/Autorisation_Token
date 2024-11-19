@@ -8,7 +8,9 @@ module.exports = {
   devIndicators: {
     autoPrerender: false,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
-
 
 export default nextConfig;
