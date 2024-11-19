@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import Main from './categories/Main';
-import ActionGame from './categories/ActionGame';
+import Action from './categories/ActionGame';
 import Drama from './categories/Drama';
 import Reviews from './categories/Reviews';
 
@@ -13,7 +13,7 @@ interface Category {
 const SideBar: React.FC = () => {
   const categories: Category[] = [
     { name: 'Главная', component: <Main />},
-    { name: 'Экшен', component: <ActionGame /> },
+    { name: 'Экшен', component: <Action /> },
     { name: 'Драма', component: <Drama /> },
     { name: 'Отзывы', component: <Reviews /> },
   ];    

@@ -13,12 +13,12 @@ const ActionGame: React.FC = () => {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api", {
+    fetch("http://localhost:5000/action", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include", // Включаем куки
+      credentials: "include",
     })
       .then((response) => response.json())
       .then((data) => setGames(data))
@@ -32,13 +32,9 @@ const ActionGame: React.FC = () => {
       {games.map((game, index) => (
         <div
           key={index}
-          className="bg-white shadow-md rounded-lg overflow-hidden" // Убрали hover:scale-105
+          className="bg-white shadow-md rounded-lg overflow-hidden" 
         >
-          <img
-            src={game.image}
-            alt={game.title}
-            className="w-full h-64 object-cover"
-          />
+          <img src={game.image} alt={game.title} className="w-full h-64 object-cover"/>
           <div className="p-4">
             <h3 className="text-xl font-semibold text-gray-800">
               {game.title}
@@ -46,13 +42,13 @@ const ActionGame: React.FC = () => {
             <p className="text-gray-600 mt-2">{game.description}</p>
             <p className="text-gray-500 mt-2">Режиссер: {game.director}</p>
             <p className="text-gray-500">Год выпуска: {game.release_year}</p>
-            <link
+            <a
               href={game.source_url}
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline mt-4 inline-block"
             >
               Смотреть на IMDb
-            </link>
+            </a>
           </div>
         </div>
       ))}

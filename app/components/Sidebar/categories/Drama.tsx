@@ -13,7 +13,13 @@ const Drama: React.FC = () => {
   const [dramas, setDramas] = useState<Drama[]>([]);
 
   useEffect(() => {
-    fetch("https://demo7755148.mockable.io/Drama")
+    fetch("http://localhost:5000/drama", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((data: Drama[]) => setDramas(data))
       .catch((error) => console.error("Error fetching Drama data:", error));
@@ -31,13 +37,13 @@ const Drama: React.FC = () => {
             <p className="text-gray-600 mt-2">{drama.description}</p>
             <p className="text-gray-500 mt-2">Режиссер: {drama.director}</p>
             <p className="text-gray-500">Год выпуска: {drama.release_year}</p>
-            <link
+            <a
               href={drama.source_url}
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline mt-4 inline-block"
             >
               Смотреть
-            </link>
+            </a>
           </div>
         </div>
       ))}
