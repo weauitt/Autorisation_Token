@@ -35,8 +35,7 @@ export default async function Authentication() {
                 Logout
               </button>
             </a>
-            <a href="/api/auth/logout">
-            </a>
+            
           </div>
         </div>
       )}
